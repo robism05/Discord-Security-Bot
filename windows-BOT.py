@@ -40,7 +40,7 @@ async def on_message(message):
   if client.user.mentioned_in(message):
     await message.channel.send('You mentioned me! (windows)')
 
-  elif message.content.startswith("!quitWin"):
+  elif message.content.startswith("!quit"):
     await message.channel.send('Goodbye!')
     exit()
 
@@ -69,4 +69,4 @@ async def on_message(message):
     
     
 
-client.run('OTM5NTM4NzY3NjU0NTUxNjUy.Yf6TqQ.f3YXDH57TjNKvHjn-wwm5DusOBM')
+client.run('key goes here')
