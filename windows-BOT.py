@@ -38,8 +38,9 @@ async def on_message(message):
   if message.author == client.user:
     return
   if client.user.mentioned_in(message):
-    await message.channel.send('You mentioned me! (windows)')
-
+    h_name = socket.gethostname()
+    await message.channel.send('You mentioned '+h_name+'!')
+    
   elif message.content.startswith("!quit"):
     await message.channel.send('Goodbye!')
     exit()
