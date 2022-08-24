@@ -59,20 +59,14 @@ async def on_message(message):
       await message.channel.send('You mentioned me! (other)')
 
 
-  elif message.content.startswith("!quitMac"):
+  elif message.content.startswith("!quit"):
     await message.channel.send('Goodbye!')
     exit()
 
 
   # System Preferences
-  SysPref=(is_runnning("System Preferences"))
-  process = subprocess.Popen(["sleep","0.5"])
-  if SysPref == True:
-    while process.poll() == None:
-      print("polling")
-      time.sleep(0.05)
-    await message.channel.send('Someone has opened System Preferences!')
-    print("process finished") 
+  SysPref = (is_runnning("System Preferences"))
+  process = subprocess.Popen(["sleep","0.5"]) 
     
 
   # bot commands   
@@ -89,7 +83,7 @@ async def on_message(message):
 
   elif message.content.startswith("!screenshot"):
     take_screen_shot()
-    for file in os.listdir("/Users/iamfire297/Desktop/PythonDev/SecurityBot"):
+    for file in os.listdir("SecurityBot"):
       if file.endswith(".jpg"):
         await message.channel.send(file=discord.File(file))
         time.sleep(2)
@@ -116,7 +110,7 @@ async def on_message(message):
   elif message.content.startswith("!record"):
     await message.channel.send("Recording your webcam... ")
     os.system('osascript record.scpt {} "{}"')
-    for file in os.listdir("/Users/iamfire297/Desktop/PythonDev/SecurityBot"):
+    for file in os.listdir("SecurityBot"):
       if file.endswith(".mov"): 
         await message.channel.send(file=discord.File(file))
         time.sleep(2)
